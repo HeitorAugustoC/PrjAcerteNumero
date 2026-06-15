@@ -24,7 +24,7 @@ export default function TelaJogo() {
         setTentativas(3);
         setChute('');
         setEstadoJogo('jogando');
-        setMensagem('Começando novo jogo! Tente adivinhar o número entre 0 e 9.');
+        setMensagem('Começando novo jogo! \n Tente adivinhar o número entre 0 e 9.');
     }
 
     const manejarChute = () => {
