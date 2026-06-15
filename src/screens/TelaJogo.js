@@ -38,7 +38,7 @@ export default function TelaJogo() {
         }
         if (chute === numeroAleatorio) {
             setEstadoJogo('ganhou');
-            setMensagem(`Parabéns! Você acertou o número secreto em ${3 - tentativas + 1} tentativas!`); // o ${3 - tentativas + 1} permite fazer um calculo matematico diretamente dentro do texto
+            setMensagem(`Parabéns! \n Você acertou o número secreto em ${3 - tentativas + 1} tentativas!`); // o ${3 - tentativas + 1} permite fazer um calculo matematico diretamente dentro do texto
         }
         else {
             const tentativasRestantes = tentativas - 1;
@@ -46,11 +46,11 @@ export default function TelaJogo() {
 
                 if (tentativasRestantes === 0) {
                     setEstadoJogo('perdeu');
-                    setMensagem(`Você perdeu! O número secreto era ${numeroAleatorio}.`);
+                    setMensagem(`Você perdeu! \n O número secreto era ${numeroAleatorio}.`);
                 }
                 else {
                     const dica = chute > numeroAleatorio ? 'menor' : 'maior'; //É basicamente um if só que resumido, onde se a condição for verdadeira ele retorna o primeiro menor, se for falsa ele retorna o segundo maior
-                    setMensagem(`Errado! O número secreto é ${dica} que ${chute}. Você ainda tem ${tentativasRestantes} tentativas restantes.`);
+                    setMensagem(`Errado! \n O número secreto é ${dica} que ${chute}. \n Você ainda tem ${tentativasRestantes} tentativas restantes.`);
             }
         }
 
