@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const CORES = {
     fundo: '#000000',
+    fundogradiente: '#1c2129',
     surface: '#202024',
     primario: '#1E90FF',
     secundario: '#FF6347',
@@ -64,14 +65,14 @@ const estilo = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textTransform: 'uppercase',
-  },
-
-    containerTela: {
-    flex: 1,
-    backgroundColor: CORES.fundo,
-    justifyContent: 'center',
-    padding: 24,
     },
+
+    gradienteTela: {
+        flex: 1,
+        justifyContent: 'center',
+        padding: 24,
+    },
+
 
     cardTela: {
     backgroundColor: CORES.surface,
@@ -126,10 +127,10 @@ const estilo = StyleSheet.create({
     color: CORES.primario,
     },
 
-  containerApp: {
+    containerApp: {
     flex: 1,
     backgroundColor: CORES.fundo,
-  },
+    },
 });
 
 export default estilo;

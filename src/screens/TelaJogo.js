@@ -4,6 +4,7 @@ import { COERS, CORES } from '../style/estilo';
 import estilo from '../style/estilo';
 import CustomTextInput from '../components/CustomTextInput';
 import CustomButton from '../components/CustomBotao';
+import { LinearGradient } from 'expo-linear-gradient'; 
 
 export default function TelaJogo() {
 
@@ -58,8 +59,10 @@ export default function TelaJogo() {
     }
 
         return (
-        <View style={estilo.containerTela}>
-            <View style={estilo.cardTela}>
+        <LinearGradient
+        colors={[CORES.fundo, CORES.fundogradiente]}
+        style={estilo.gradienteTela}>
+                        <View style={estilo.cardTela}>
                 <Text style={[
                         estilo.mensagemTela, 
                         estadoJogo === 'ganhou' && { color: CORES.primario },
@@ -68,7 +71,7 @@ export default function TelaJogo() {
                         {mensagem}
                         </Text>
                         {estadoJogo === 'jogando' ? (
-                         <>
+                            <>
                             <CustomTextInput 
                             label= "Seu palpite"
                             placeHolder="Digite aqui..."
@@ -80,18 +83,19 @@ export default function TelaJogo() {
                             </Text>
 
                             <CustomButton title="Enviar Chute" onPress={manejarChute}/>
-                         </>
+                            </>
                             ) : (
                                     <View style={estilo.containerFimDeJogo}>
                                         <Text style={estilo.numeroRevelado}>{numeroAleatorio}</Text>
                                     <CustomButton title="Jogar de novo" onPress={começarNovoJogo}
                                     type={estadoJogo === 'ganhou' ? 'primario' : 'secundario'}/>
                                     </View>
-                              )
-                        }
+                                )
+                        } 
             </View>
-        </View>
+        </LinearGradient>
         );
 
+        // A
 
 }
