@@ -1,11 +1,11 @@
 import React from 'react';
-import { TextInput, StyleSheet, View, Text } from 'react-native';
-import { CORES } from  '../style/estilo';
+import { TextInput, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import estilo, { CORES } from  '../style/estilo';
 
 export default function CustomButton({ title, onPress, type = 'primary', disabled }) {
 
     const estadobotao = [
-    styles.button,
+    estilo.botaocustom,
     type === 'secundario' && { backgroundColor: CORES.secundario },
     disabled && { opacity: 0.5 }
     ];
@@ -18,7 +18,7 @@ export default function CustomButton({ title, onPress, type = 'primary', disable
         activeOpacity={0.7}
         disabled={disabled}
     >
-    <Text style={styles.text}>{title}</Text>
+    <Text style={estilo.textoBotao}>{title}</Text>
     </TouchableOpacity>
 
     )

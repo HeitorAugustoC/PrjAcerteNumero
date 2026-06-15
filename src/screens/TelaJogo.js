@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Keyboard, Alert } from 'react-native';
-import { COERS } from '../style/estilo';
+import { COERS, CORES } from '../style/estilo';
 import estilo from '../style/estilo';
-import CustormInput from '../components/CustomTextInput';
+import CustomTextInput from '../components/CustomTextInput';
 import CustomButton from '../components/CustomBotao';
 
 export default function TelaJogo() {
@@ -27,7 +27,7 @@ export default function TelaJogo() {
     }
 
     const manejarChute = () => {
-        keyboard.dismiss();
+        Keyboard.dismiss();
 
         //Validar se o chute é um número entre 0 e 9
         const numeroChutado = parseInt(chute);
@@ -42,22 +42,54 @@ export default function TelaJogo() {
         else {
             const tentativasRestantes = tentativas - 1;
             setTentativas(tentativasRestantes);
+
+                if (tentativasRestantes === 0) {
+                    setEstadoJogo('perdeu');
+                    setMensagem(`Você perdeu! O número secreto era ${numeroAleatorio}.`);
+                }
+                else {
+                    const dica = chute > numeroAleatorio ? 'menor' : 'maior'; //É basicamente um if só que resumido, onde se a condição for verdadeira ele retorna o primeiro menor, se for falsa ele retorna o segundo maior
+                    setMensagem(`Errado! O número secreto é ${dica} que ${chute}. Você ainda tem ${tentativasRestantes} tentativas restantes.`);
+            }
         }
 
-        if (tentativasRestantes === 0) {
-            setEstadoJogo('perdeu');
-            setMensagem(`Você perdeu! O número secreto era ${numeroAleatorio}.`);
-        }
-        else {
-            const dica = chute > numeroAleatorio ? 'menor' : 'maior';
-            setMensagem(`Errado! O número secreto é ${dica} que ${chute}. Você ainda tem ${tentativasRestantes} tentativas restantes.`);
-        }
+        
         setChute('');
     }
 
         return (
-        <View style={estilo.container}>
-            
+        <View style={estilo.containerTela}>
+            <View style={estilo.cardTela}>
+                <Text style={[
+                        estilo.mensagemTela, 
+                        estadoJogo === 'ganhou' && { color: CORES.primario },
+                        estadoJogo === 'perdeu' && { color: CORES.secundario }
+                        ]}>
+                        {mensagem}
+                        </Text>
+                        {estadoJogo === 'jogando' ? (
+                         <>
+                            <CustomTextInput 
+                            label= "Seu palpite"
+                            placeHolder="Digite aqui..."
+                            value={chute}
+                            onChangeText={setChute}/>
+
+                            <Text style={estilo.tentativasrestantesTexto}>
+                                Tentativas Restante: <Text style={estilo.destacar}>{tentativas}</Text>
+                            </Text>
+
+                            <CustomButton title="Enviar Chute" onPress={manejarChute}/>
+                         </>
+                            ) : (
+                                    <View style={estilo.containerFimDeJogo}>
+                                        <Text style={estilo.numeroRevelado}>{numeroAleatorio}</Text>
+                                    <CustomButton title="Jogar de novo" onPress={começarNovoJogo}
+                                    type={estadoJogo === 'ganhou' ? 'primario' : 'secundario'}/>
+                                    </View>
+                              )
+                        }
+            </View>
         </View>
         );
 

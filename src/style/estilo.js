@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const CORES = {
     fundo: '#000000',
+    surface: '#202024',
     primario: '#1E90FF',
     secundario: '#FF6347',
     textoPrimario: '#FFFFFF',
@@ -11,10 +12,6 @@ export const CORES = {
 }
 
 const estilo = StyleSheet.create({
-
-    textoTeste: {
-        color: CORES.textoPrimario,
-    },
 
     container: {
         background: CORES.fundo,
@@ -62,7 +59,72 @@ const estilo = StyleSheet.create({
         elevation: 5,
     },
 
+    textoBotao: {
+    color: CORES.textoPrimario,
+    fontSize: 16,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+  },
+
+    containerTela: {
+    flex: 1,
+    backgroundColor: CORES.fundo,
+    justifyContent: 'center',
+    padding: 24,
+    },
+
+    cardTela: {
+    backgroundColor: CORES.surface,
+    padding: 24,
+    borderRadius: 16,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: CORES.borda,
+    },
+
+    tituloTela: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: CORES.textoPrimario,
+    marginBottom: 16,
+    textAlign: 'center',
+    },
+
+    mensagemTela: {
+    fontSize: 16,
+    color: CORES.textoSecundario,
+    textAlign: 'center',
+    marginBottom: 24,
+    lineHeight: 22,
+    },
+
+    tentativasrestantesTexto: {
+    color: CORES.textoSecundario,
+    fontSize: 14,
+    marginBottom: 16,
+    },
     
+    destacar: {
+    color: CORES.secundario,
+    fontWeight: 'bold',
+    },
+
+    containerFimDeJogo: {
+    width: '100%',
+    alignItems: 'center',
+    },
+
+    numeroRevelado: {
+    fontSize: 18,
+    color: CORES.textoPrimario,
+    marginBottom: 20,
+    },
+
+    destacarNumero: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: CORES.primario,
+    }
 
 });
 
