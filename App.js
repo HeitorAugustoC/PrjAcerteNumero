@@ -7,16 +7,8 @@ import TelaJogo from '../PrjAcerteNumero/src/screens/TelaJogo';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={estilo.containerApp}>
       <TelaJogo />
     </SafeAreaView>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: CORES.fundo,
-  },
-});

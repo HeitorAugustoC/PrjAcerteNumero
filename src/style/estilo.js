@@ -124,8 +124,12 @@ const estilo = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: CORES.primario,
-    }
+    },
 
+  containerApp: {
+    flex: 1,
+    backgroundColor: CORES.fundo,
+  },
 });
 
 export default estilo;
